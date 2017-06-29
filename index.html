@@ -2,11 +2,33 @@
 <htmL>
     <head>
         <script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
-            <script src="components/ground.js"></script>
-            <script src="components/skyGradient.js"></script>
+        <script src="components/ground.js"></script>
+        <script src="components/skyGradient.js"></script>
+        <script type="text/javascript" src="script.js"></script>
+        <link rel="stylesheet" href="style.css"/>
         <title>Zombie Rush</title>
     </head>
     <body>
+        <!--Score screen-->
+        <div class="score">Score: 0</div>
+        <!--Title Screen-->
+        <div style="cursor: pointer" id="startDaGame" class="screen title-screen">
+          <div class="title">ZOMBIE RUSH</div>
+          <div class="start blink">Click to Start</div>
+          <div class="instructions">Aim for the zombies with the red cursor, and hold the cursor on them to shoot.</div>
+        </div>
+        <!--End Screen Success-->
+        <div class="screen end-screen">
+          <div class="end">Congratulations you saved the world!</div>
+          <div class="end">Made by <a href="http://www.github.com/charityhsu">Charity</a> and <a href="http://www.github.com/isabellareiff">Izzy</a></div>
+        </div>
+        <!--End Screen Fail-->
+        <div class="screen end-screen">
+          <div class="end">Oh no! You got turned into a zombie, and the human race now ceases to exist!</div>
+          <div class="end">Made by <a href="http://www.github.com/charityhsu">Charity</a> and <a href="http://www.github.com/isabellareiff">Izzy</a></div>
+        </div>
+        <!--Scene-->
+
         <a-scene fog="type: linear; color: #bc483e">
             <!--Assets-->
             <a-asset>
@@ -17,10 +39,13 @@
                 <audio id="audio" src="assets/zombie-background.mp3" preload="auto"></audio>
                 <audio id="gunshot" src="assets/gunsound.mp3" preload="auto"></audio>
                 <audio id="death" src="assets/shotgun.mp3" preload="auto"></audio>
-                <!--<audio id="dbb" src="assets/dbb.mp3" preload="auto"></audio>-->
-                
+                <!--<audio id="dbb" src="assets/dbb.mp3" preload="auto"></audio>-->\
                 <a-asset-item id="zombie-obj" src="assets/gears-of-war-3-lambent-female.obj"></a-asset-item>
                 <a-asset-item id="zombie-mtl" src="assets/gears-of-war-3-lambent-female.mtl"></a-asset-item>
+                
+                
+                <!--<a-mixin id="enemy" explode="on: hit" class="clickable" id="z1" src="#zombie-obj" mtl="#zombie-mtl" sound="src: #death; on: click"></a-mixin>-->
+                
             </a-asset>
             <!--Sky-->
             <a-entity
@@ -54,7 +79,7 @@
                    to="0 0 0"
                    direction="normal"
                    easing="linear"
-                   dur="25000"
+                   dur="35000"
                    repeat="0"
                    fill="forwards"
                    >
@@ -72,7 +97,7 @@
                    to="0 0 0"
                    direction="normal"
                    easing="linear"
-                   dur="25000"
+                   dur="35000"
                    repeat="0"
                    fill="forwards">
                </a-animation>
@@ -95,7 +120,7 @@
                    to="0 0 0"
                    direction="normal"
                    easing="linear"
-                   dur="25000"
+                   dur="35000"
                    repeat="0"
                    fill="forwards">
                </a-animation>
@@ -118,7 +143,7 @@
                    to="0 0 0"
                    direction="normal"
                    easing="linear"
-                   dur="25000"
+                   dur="35000"
                    repeat="0"
                    fill="forwards"
                    >
@@ -141,7 +166,7 @@
                    to="0 0 0"
                    direction="normal"
                    easing="linear"
-                   dur="25000"
+                   dur="35000"
                    repeat="0"
                    fill="forwards">
                </a-animation>
@@ -163,7 +188,7 @@
                    to="0 0 0"
                    direction="normal"
                    easing="linear"
-                   dur="25000"
+                   dur="35000"
                    repeat="0"
                    fill="forwards">
                </a-animation>
@@ -186,7 +211,7 @@
                    to="0 0 0"
                    direction="normal"
                    easing="linear"
-                   dur="25000"
+                   dur="35000"
                    repeat="0"
                    fill="forwards"
                    >
@@ -209,7 +234,7 @@
                    to="0 0 0"
                    direction="normal"
                    easing="linear"
-                   dur="25000"
+                   dur="35000"
                    repeat="0"
                    fill="forwards">
                </a-animation>
@@ -231,7 +256,7 @@
                    to="0 0 0"
                    direction="normal"
                    easing="linear"
-                   dur="25000"
+                   dur="35000"
                    repeat="0"
                    fill="forwards">
                </a-animation>
@@ -254,7 +279,7 @@
                    to="0 0 0"
                    direction="normal"
                    easing="linear"
-                   dur="25000"
+                   dur="35000"
                    repeat="0"
                    fill="forwards"
                    >
@@ -277,7 +302,7 @@
                    to="0 0 0"
                    direction="normal"
                    easing="linear"
-                   dur="25000"
+                   dur="35000"
                    repeat="0"
                    fill="forwards">
                </a-animation>
@@ -299,7 +324,7 @@
                    to="0 0 0"
                    direction="normal"
                    easing="linear"
-                   dur="25000"
+                   dur="35000"
                    repeat="0"
                    fill="forwards">
                </a-animation>
@@ -309,6 +334,7 @@
                    to="false"
                ></a-animation>
             </a-obj-model>
+            
 
             <!--Camera-->
             <a-camera userHeight="1.6" position="0 1 0">
@@ -318,7 +344,9 @@
                     material="color: red; shader: flat"
                     maxDistance="30"
                     fuse="true"
-                    objects=.clickable>
+                    fuseTimeout="5"
+                    objects=.clickable
+                    >
                 <a-animation begin="click" easing="ease-in" attribute="scale"
              fill="forwards" from="2 2 2" to="1 1 1" dur="400"></a-animation>
              
