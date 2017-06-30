@@ -57,6 +57,16 @@
   padding-left: 20px;
 }
 
+.timer {
+  color: white;
+  position: fixed;
+  top: 40px;
+  font-family: monospace;
+  font-size: 20px;
+  z-index: 99999;
+  padding-left: 20px;
+}
+
 .end a {
   color: #ef2d5e;
   text-decoration: none;
