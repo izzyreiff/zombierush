@@ -1,7 +1,6 @@
-var MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
 window.onload = function() {
     var titleEl = document.querySelector('.title-screen');
-    var endEl = document.querySelector('.end-screen');
+    var endEl = document.querySelector('.end-screen-win');
     var enemies = document.querySelectorAll('[id^="z"]');
     var deadEnemies = [];
     var scoreEl = document.querySelector('.score');
@@ -14,7 +13,7 @@ window.onload = function() {
         deadEnemies.push(enemy);
         score+=100;
         scoreEl.innerHTML = 'Score: ' + score;
-        if (enemies.length === deadEnemies.length) {
+        if (score==1200) {
             endEl.style.display = 'block';
         }
     }

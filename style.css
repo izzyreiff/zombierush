@@ -10,7 +10,11 @@
   font-family: monospace;
 }
 
-.end-screen {
+.end-screen-lose {
+  display: none;
+}
+
+.end-screen-win {
   display: none;
 }
 
@@ -25,7 +29,7 @@
 .start, .end {
   font-weight: bold;
   margin-top: 45px;
-  font-size: 35px;
+  font-size: 45px;
 }
 
 .instructions {

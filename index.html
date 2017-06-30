@@ -18,14 +18,20 @@
           <div class="instructions">Aim for the zombies with the red cursor.<br>Hover to shoot.</div>
         </div>
         <!--End Screen Success-->
-        <div class="screen end-screen">
-          <div class="end">Congratulations you saved the world!</div>
-          <div class="end">Made by <a href="http://www.github.com/charityhsu">Charity</a> and <a href="http://www.github.com/isabellareiff">Izzy</a></div>
+        <div class="screen end-screen-win">
+            <div class="end">Congratulations you saved the world!</div>
+            <div class="end">Made by <a href="http://www.github.com/charityhsu">Charity</a> and <a href="http://www.github.com/isabellareiff">Izzy</a>
+            <br><br><br>
+            <a href="http://www.isabellareiff.com/zombierush">Click here to replay the game!</a>
+          </div>
         </div>
         <!--End Screen Fail-->
-        <!--<div class="screen end-screen">-->
-        <!--  <div class="end">Oh no! You got turned into a zombie, and the human race now ceases to exist!</div>-->
-        <!--  <div class="end">Made by <a href="http://www.github.com/charityhsu">Charity</a> and <a href="http://www.github.com/isabellareiff">Izzy</a></div>-->
+        <div class="screen end-screen-lose">
+            <div class="end">Oh no! You got turned into a zombie, and the human race now ceases to exist!</div>
+            <div class="end">Made by <a href="http://www.github.com/charityhsu">Charity</a> and <a href="http://www.github.com/isabellareiff">Izzy</a>
+            <br><br><br>
+            <a href="http://www.isabellareiff.com/zombierush">Click here to replay the game!</a>
+          </div>
         </div>
         <!--Scene-->
         <a-scene fog="type: linear; color: #bc483e">
@@ -114,7 +120,7 @@
                ></a-animation>
             </a-obj-model>
             <!--Zombie 2-->
-            <a-obj-model class="clickable" id="z2" src="#zombie-obj" mtl="#zombie-mtl" position="0 0 -20" sound="src: #death; on: click">
+            <a-obj-model class="clickable" id="z2" src="#zombie-obj" mtl="#zombie-mtl" position="3 0 -20" sound="src: #death; on: click">
                <a-animation
                    attribute="position"
                    to="0 0 0"
